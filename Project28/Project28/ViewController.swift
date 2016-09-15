@@ -25,6 +25,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
 
     }
+    
+    @IBAction func authenticateUser(sender: AnyObject) {
+        
+    }
+    
 
     func adjustForKeyboard(notification: NSNotification) {
         let userInfo = notification.userInfo!

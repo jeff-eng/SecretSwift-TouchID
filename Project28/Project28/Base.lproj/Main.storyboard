@@ -17,7 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lKE-KU-OvS">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RD-Xh-VAG">
+                                <rect key="frame" x="256" y="285" width="100" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RR7-gb-LWi"/>
+                                    <constraint firstAttribute="width" constant="100" id="xk1-Uh-4D8"/>
+                                </constraints>
+                                <state key="normal" title="Authenticate"/>
+                                <connections>
+                                    <action selector="authenticateUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pvg-Kg-06l"/>
+                                </connections>
+                            </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lKE-KU-OvS">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -26,7 +37,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7RD-Xh-VAG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Bac-lQ-n07"/>
                             <constraint firstItem="lKE-KU-OvS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HLJ-FQ-kRa"/>
+                            <constraint firstItem="7RD-Xh-VAG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SbC-Ce-xY4"/>
                             <constraint firstItem="lKE-KU-OvS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VKL-K4-Orb"/>
                             <constraint firstItem="lKE-KU-OvS" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="XhY-Zy-MZa"/>
                             <constraint firstAttribute="trailing" secondItem="lKE-KU-OvS" secondAttribute="trailing" id="mmw-A0-Itd"/>

@@ -12,6 +12,7 @@
 		95493E7E1D8A22B2002E6E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95493E7C1D8A22B2002E6E44 /* Main.storyboard */; };
 		95493E801D8A22B2002E6E44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95493E7F1D8A22B2002E6E44 /* Assets.xcassets */; };
 		95493E831D8A22B2002E6E44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95493E811D8A22B2002E6E44 /* LaunchScreen.storyboard */; };
+		95493E8B1D8B69CC002E6E44 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95493E8A1D8B69CC002E6E44 /* KeychainWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		95493E7F1D8A22B2002E6E44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95493E821D8A22B2002E6E44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95493E841D8A22B2002E6E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95493E8A1D8B69CC002E6E44 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				95493E781D8A22B2002E6E44 /* AppDelegate.swift */,
 				95493E7A1D8A22B2002E6E44 /* ViewController.swift */,
 				95493E7C1D8A22B2002E6E44 /* Main.storyboard */,
+				95493E8A1D8B69CC002E6E44 /* KeychainWrapper.swift */,
 				95493E7F1D8A22B2002E6E44 /* Assets.xcassets */,
 				95493E811D8A22B2002E6E44 /* LaunchScreen.storyboard */,
 				95493E841D8A22B2002E6E44 /* Info.plist */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95493E8B1D8B69CC002E6E44 /* KeychainWrapper.swift in Sources */,
 				95493E7B1D8A22B2002E6E44 /* ViewController.swift in Sources */,
 				95493E791D8A22B2002E6E44 /* AppDelegate.swift in Sources */,
 			);

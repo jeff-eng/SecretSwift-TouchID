@@ -15,10 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Nothing to see here"
+        
         let notificationCenter = NSNotificationCenter.defaultCenter()
         // Ask iOS to tell us when the keyboard changes or when it hides.
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: UIApplicationWillResignActiveNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,10 +30,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func authenticateUser(sender: AnyObject) {
-        
+        unlockSecretMessage()
     }
     
-
     func adjustForKeyboard(notification: NSNotification) {
         let userInfo = notification.userInfo!
         
@@ -47,6 +49,33 @@ class ViewController: UIViewController {
         
         let selectedRange = secret.selectedRange
         secret.scrollRangeToVisible(selectedRange)
+    }
+    
+    // Loads the message into the text view
+    func unlockSecretMessage() {
+        // Sets initial hidden property to false, which means the text view is visible by default
+        secret.hidden = false
+        // Change title of view controller
+        title = "Secret stuff!"
+        
+        if let text = KeychainWrapper.stringForKey("SecretMessage") {
+            // if a value exists, then assign that value as the text for the text view
+            secret.text = text
+        }
+    }
+    
+    // Saves the message back to the keychain; write text view's text to keychain, then make hidden
+    func saveSecretMessage() {
+        if !secret.hidden {
+            // Write to the keychain
+            KeychainWrapper.setString(secret.text, forKey: "SecretMessage")
+            // Hide keyboard
+            secret.resignFirstResponder()
+            // Re-hide the text view
+            secret.hidden = true
+            // Change back the view controller's title
+            title = "Nothing to see here"
+        }
     }
 
 }

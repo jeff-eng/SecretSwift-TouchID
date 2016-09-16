@@ -6,6 +6,7 @@
 //  Copyright © 2016 Jeffrey Eng. All rights reserved.
 //
 
+import LocalAuthentication
 import UIKit
 
 class ViewController: UIViewController {
@@ -30,7 +31,33 @@ class ViewController: UIViewController {
     }
     
     @IBAction func authenticateUser(sender: AnyObject) {
-        unlockSecretMessage()
+        let context = LAContext()
+        var error: NSError?
+        
+        // Here, we are checking to see if the device has Touch ID and if so, request Touch ID to begin check
+        if context.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Please verify your identity"
+            
+            context.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [unowned self] (success, authenticationError) in
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    if success {
+                        self.unlockSecretMessage()
+                    } else {
+                        // provide alert message that Touch ID verification failed
+                        let ac = UIAlertController(title: "Authentication failed", message: "Your fingerprint could not be verified. Please try again.", preferredStyle: .Alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self.presentViewController(ac, animated: true, completion: nil)
+                    }
+                }
+            }
+        } else {
+            // provide alert if device does not have Touch ID
+            let ac = UIAlertController(title: "Touch ID is not available", message: "Your device is not configured for Touch ID", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+        }
     }
     
     func adjustForKeyboard(notification: NSNotification) {
